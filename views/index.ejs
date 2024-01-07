@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>UV Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
+    rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+
+<body>
+  <h1>Should you wear sunscreen today?</h1><br>
+  <div class="card">
+    <% if(locals.uv >= 6) { %>
+        <h2 style="font-size: 3em;">YES! <br>
+            <span style="font-size: 0.5em;">You absolutely should</span></h2>
+    <% } else{ %>
+        <h2>No, you're fine for now.</h2>
+    <% } %>
+    <p>Current UV index in your location is: <strong style="font-size:1.5em;"><%= locals.uv %></strong></p>
+    <P>UV Index legend:<br>
+        Low: 0-3<br>
+        Moderate: 3-6<br>
+        High: 6-8<br>
+        Very High: 8-11<br>
+        Extreme: 11+
+    </P>
+  </div>
+  <% if(locals.error) { %>
+    <p><%= error %></p>
+  <% } %>
+</body>
+
+</html>
