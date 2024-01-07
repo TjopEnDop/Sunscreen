@@ -9,19 +9,28 @@
     rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
   <link rel="stylesheet" type="text/css" href="main.css">
-
 </head>
 
 <body>
   <h1>Should you wear sunscreen today?</h1><br>
   <div class="card">
+    <h3>Input your street address below</h3>
+    <!-- Form to collect user input data for Geocode command -->
+    <form action="/" method="POST">
+        <label for="street">Street Name</label>
+        <input type="text" name="street" placeholder="Street Name">
+        <input type="submit" class="main-submit btn" value="Submit" />
+    </form>
+    <!-- If function to display result based on uv index score -->
     <% if(locals.uv >= 6) { %>
         <h2 style="font-size: 3em;">YES! <br>
             <span style="font-size: 0.5em;">You absolutely should</span></h2>
     <% } else{ %>
         <h2>No, you're fine for now.</h2>
     <% } %>
+    <!-- Text displaying uv index to user -->
     <p>Current UV index in your location is: <strong style="font-size:1.5em;"><%= locals.uv %></strong></p>
+    <!-- Text displaying uv index legend to user -->
     <P>UV Index legend:<br>
         Low: 0-3<br>
         Moderate: 3-6<br>
@@ -30,6 +39,7 @@
         Extreme: 11+
     </P>
   </div>
+  <!-- Error log -->
   <% if(locals.error) { %>
     <p><%= error %></p>
   <% } %>
